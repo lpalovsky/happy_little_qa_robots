@@ -1,0 +1,6 @@
+robotframework-sshlibrary
+robotframework-pabot
+robotframework-browser
+
+# nodejs nmeeds to be installed
+# do: rfbrowser init
