@@ -8,17 +8,29 @@ Documentation   SAP ABAP AS WEB UI related tests.
 ...     Suite tests ABAP AS Web UI access
 
 Library  Browser
+Resource  resources/sles4sap/netweaver_web.resource
+Suite Setup  Open GUI Page
 
 *** Variables ***
-${WEBUI_URL}  http://192.168.122.176:8080/sap/bc/gui/sap/its/webgui/
 ${ABAP_USER}  SAP*
 
 *** Test Cases ***
-Open Webui and login
-    [Documentation]  "Checking WEBui login"
-    New Browser  firefox  headless=True
+Test ABAP Login
+    Netweaver Log In
+
+Test transaction SICK
+    Open Transaction  transaction_code=SICK
+
+Test transaction ST22
+    Open Transaction  transaction_code=ST22
+
+Test ABAP Log Off
+    Netweaver Log Off
+
+*** Keywords ***
+Open GUI Page
+    [Documentation]  Opens browser with NW WEB UI page loaded.
+    New Browser  firefox  headless=False
     New Context
     New Page    ${WEBUI_URL}
-    Take Screenshot
-
 
